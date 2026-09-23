@@ -1,0 +1,46 @@
+Using 50000 URLs
+Phishing share: 0.225
+
+=== Baseline: Logistic Regression ===
+              precision    recall  f1-score   support
+
+           0       0.84      0.99      0.91      7755
+           1       0.90      0.33      0.48      2245
+
+    accuracy                           0.84     10000
+   macro avg       0.87      0.66      0.69     10000
+weighted avg       0.85      0.84      0.81     10000
+
+
+=== Random Forest ===
+              precision    recall  f1-score   support
+
+           0       0.89      0.95      0.92      7755
+           1       0.76      0.58      0.66      2245
+
+    accuracy                           0.86     10000
+   macro avg       0.82      0.77      0.79     10000
+weighted avg       0.86      0.86      0.86     10000
+
+Confusion matrix (rows = actual, columns = predicted):
+[[7339  416]
+ [ 934 1311]]
+
+Saved results/feature_importance.png
+
+Sample of misclassified URLs:
+10874                                   tengalo.com/fwzysh
+35919             6i3cb6owitcouepv.mywa2pay.com/img/lb.png
+49566    udn.epicgames.com/Three/IntegratedPartnersProg...
+40560                                cvilleshirtco.com/del
+44186                             estacaogsm.com.br/aother
+30551                          globalbizdns.com/.index.php
+48606          mazatlanapartments.com/js/godwin/index.html
+27571                   www.ce-adobe.fr/paypal_compte.html
+25566                            www.btpcadres.com/wep.php
+14426    www.howcan.co.in/wp-content/uploads/2012/07/ja...
+23352                        www.myhomemusic.com/music.php
+30424                              rentvspb.ru/54JHbjgcDLG
+2815                              audiconlex.cl/us/paypal/
+44061                                 flashbox.pw/skyload/
+4080                 uncyclopedia.wikia.com/wiki/Yorkshire
