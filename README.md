@@ -1,5 +1,14 @@
 # phishing-url-classifier
-Using 50000 URLs 22.5% are phishing.
+
+This is a machine learning project that classifies URLs as phishing or legitimate using only features extracted from the URL text. It never visits the links.
+
+## Dataset used 
+[Phishing Site URLs, https://www.kaggle.com/datasets/taruntiwarihp/phishing-site-urls], using [50000] URLs, of which [22.5]% are phishing.
+
+## Method
+- Extracted 12 features per URL, such as length, number of dots and hyphens, entropy, presence of an IP address or "@", and suspicious keywords
+- Trained a Random Forest and compared it against a Logistic Regression baseline
+- 80/20 stratified train/test split
 
 The dataset is imbalanced (22.5% phishing), so I evaluated with precision, recall and F1 on the phishing class instead of just relying on accuracy.
 
@@ -12,6 +21,10 @@ URLs that are phishing: 1311
 |   Model   |   Precision   |   Recall  |   F1  |
 | Logistic Regression | 0.90 | 0.33 | 0.48 |
 | Random Forest | 0.76 | 0.58 | 0.66 |
+
+(Metrics shown for the phishing class.)
+
+![Feature importance](results/feature_importance.png)
 
 The Logistic Regression improved the Precision by 0.14.
 The Random Forest improved the Recall by 0.25.
@@ -31,3 +44,18 @@ The reason some of the phishing websites were misclassified using my model are b
 4. Big, legitimate sites. udn.epicgames.com and uncyclopedia.wikia.com look like real sites that were probably flagged wrongly. Long paths and subdomains can make legitimate URLs look suspicious to the model.
 
 5. Nothing in the URL text alone reveals the danger. That's the core limitation of a URL-only model.
+
+## Limitations
+- Scores may be inflated by dataset quirks such as duplicate patterns or a single data source
+- Attackers can evade URL-only models with clean-looking domains, so this shouldn't be the only defence
+- Not tested on real-world traffic
+
+## Run it yourself
+    git clone https://github.com/2CheesBurger/phishing-url-classifier.git
+    cd phishing-url-classifier
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python3 phishing_classifier.py
+
+Place the dataset CSV at data/urls.csv (see Dataset above).
